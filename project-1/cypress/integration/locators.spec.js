@@ -39,4 +39,19 @@ describe("Locators", () => {
     cy.get("[data-cy='btn-id-1']");
     cy.getByTestId("btn-id-1");
   });
+
+  it("locating elements with contains", () => {
+    // get element by text.
+    cy.contains("Unique Text");
+
+    // get element by text (not unique)
+    cy.contains("Not Unique Text");
+
+    // with selector
+    cy.contains("[type='submit']", "Not Unique Text");
+    // get the form element and find the input element that contains "not unique text" inside of the form.
+    cy.contains("form", "Not Unique Text");
+
+    cy.get("[type='submit']").contains("Not Unique Text");
+  });
 });
